@@ -11,8 +11,7 @@ function constructApiUrl() {
     return checkEndSlash(safari.extension.settings.getItem("sab_url")) + 'api';
 }
 
-// hasJsConfig = has local html javascript
-function constructApiPost(hasJsConfig) {
+function constructApiPost() {
 
     var apikey = safari.extension.settings.getItem("api_key");
     var username = safari.extension.settings.getItem("username");
@@ -42,40 +41,30 @@ function constructApiPost(hasJsConfig) {
 
 function addToSABnzbd(addLink, nzb, mode) {
 
-    
     // This is currently run by a content script
     // Should change it to run in background.html
     // The error function is always called - even on success, probably due to this
     var sabApiUrl = constructApiUrl();
-    var data = constructApiPost(false);
+    var data = constructApiPost();
     data.mode = mode;
     data.name = nzb;
-    $.ajax({
-        type: "GET",
-        url: sabApiUrl,
-        dataType: 'json',
-        data: data,
-        success: function(data) {
-        
-            /*// If there was an error of some type, report it to the user and abort!
-            if(data.error) {
-                var img = chrome.extension.getURL('images/sab2_16_red.png');
-                $(addLink).find('img').attr("src", img);
-                alert(data.error);
-            }*/
-        
-            var img = safari.extension.baseURI + 'images/sab2_16_green.png';
-            $(addLink).find('img').attr("src", img);
+
+    dojo.xhrGet({
+        url:sabApiUrl,
+        handleAs:"json",
+        content:data,
+        load: function(response, ioArgs){
+            alert(response);
+            alert(ioArgs);
         },
-        error: function() {
-            // This seems to get called on a success message from sabnzbd.
-            //var img = chrome.extension.getURL('sab2_16_red.png');
+        error: function(response, ioArgs){
+            //alert(response);
+            //alert(ioArgs);
             var img = safari.extension.baseURI + 'images/sab2_16_green.png';
             $(addLink).find('img').attr("src", img);
-            
-            //alert("Could not contact SABnzbd \n Check it is running and your settings are correct");
         }
-    });  
+    });
+    
 }
 
 //Function to respond and pass message from injected javascript

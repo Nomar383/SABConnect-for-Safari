@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>DefaultValue</key>
-		<string>http://locahost.com:8080</string>
+		<string>http://localhost:8080</string>
 		<key>Key</key>
 		<string>sab_url</string>
 		<key>Title</key>
@@ -13,6 +13,8 @@
 		<string>TextField</string>
 	</dict>
 	<dict>
+		<key>DefaultValue</key>
+		<string></string>
 		<key>Key</key>
 		<string>api_key</string>
 		<key>Title</key>
