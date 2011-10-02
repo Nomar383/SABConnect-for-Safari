@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.2</string>
+	<string>1.3</string>
 	<key>CFBundleVersion</key>
-	<string>1.2</string>
+	<string>1.3</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -32,6 +32,7 @@
 				<string>content_scripts/nzbsorg.js</string>
 				<string>content_scripts/nzbclub.js</string>
 				<string>content_scripts/bintube.js</string>
+				<string>content_scripts/nzb.su.js</string>
 			</array>
 			<key>Start</key>
 			<array>
@@ -60,6 +61,7 @@
 				<string>*.nzbclub.com</string>
 				<string>*.bintube.com</string>
 				<string>*.nzbxxx.com</string>
+				<string>*.nzb.su</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
