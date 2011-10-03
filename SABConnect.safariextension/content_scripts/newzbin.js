@@ -10,7 +10,7 @@ else {
 }
 /**********************************************************/
 
-function findNZBId(elem) {
+function findNZBIdNewzbin(elem) {
     var url = $(elem).attr('href');
     
     var splitstr = url.split(/browse\/post\/([^\/]+)/g);
@@ -26,7 +26,7 @@ function addToSABnzbdFromIconClick() {
     //}
 
     // Find the newzbin id from the href
-    var nzbid = findNZBId(this);
+    var nzbid = findNZBIdNewzbin(this);
     if(nzbid) {
     
         // Set the image to an in-progress image
@@ -54,7 +54,7 @@ function addToSABnzbdFromCheckbox(checkbox) {
 
     var link = $(checkbox).closest('tr').find('a[title="Send to SABnzbd"]');
     // Find the nzb id from the links href
-    var nzbid = findNZBId(link);
+    var nzbid = findNZBIdNewzbin(link);
     if (nzbid) {
         var img = safari.extension.baseURI + 'images/sab2_16_fetching.png';
         // Set the image to an in-progress image

@@ -10,11 +10,6 @@ else {
 }
 /**********************************************************/
 
-//Don't check page if we aren't on nzb.su
-if (loc_nzbsu) {
-   handleAllDownloadLinks();
-}
-
 var nzburl;
 var addLink;
 var category = null;
@@ -97,7 +92,8 @@ function addToSABnzbdFromNZBdotsu() {
 	}
 }
 
-function handleAllDownloadLinks() {
+//Don't check page if we aren't on nzb.su
+if (loc_nzbsu) {
 	// List view: add a button above the list to send selected NZBs to SAB
 	$('input[class="nzb_multi_operations_sab"]').each(function() {
 		$(this).css('display', 'inline-block');

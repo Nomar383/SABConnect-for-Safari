@@ -13,7 +13,7 @@ else {
 }
 /**********************************************************/
 
-function findNZBId(elem) {
+function findNZBIdMatrix(elem) {
     var url = $(elem).attr('href');
 
     // 0.5a6 needs nzb-details not nzb-download in url
@@ -30,7 +30,7 @@ function addToSABnzbdFromNZBMatrix() {
     //}
 
     // Find the newzbin id from the href
-    var nzbid = findNZBId(this);
+    var nzbid = findNZBIdMatrix(this);
     if(nzbid) {
         // Set the image to an in-progress image
         var img = safari.extension.baseURI +'images/sab2_16_fetching.png';
