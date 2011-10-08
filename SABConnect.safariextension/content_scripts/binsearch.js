@@ -2,11 +2,14 @@
 //Check if we are on binsearch.info
 var loc_binsearch;
 
-if (location.href.indexOf("binsearch.info") == -1 && location.href.indexOf("binsearch.net") == -1 ) {
-    loc_binsearch = 0;
+if (location.href.indexOf("binsearch.info") != -1) {
+    loc_binsearch = 1;
+}
+else if (location.href.indexOf("binsearch.net") != -1 ) {
+    loc_binsearch = 1;
 }
 else {
-    loc_binsearch = 1;
+    loc_binsearch = 0;
 }
 
 /**********************************************************/
@@ -25,7 +28,9 @@ function addToSABnzbdFromBinsearch() {
 	var a = document.getElementsByTagName('input');
 	for (var i=0, len=a.length; i<len; ++i) {
 		if (a[i].type == 'checkbox' && a[i].checked) {         
-            var message =  'http://binsearch.info/?action=nzb&' + a[i].name + '=1' + " " +  'http://binsearch.info/?action=nzb&' + a[i].name + '=1' + " " + "addurl";
+            var message =  'http://binsearch.info/?action=nzb&' + a[i].name + '=1' + " " +
+                           'http://binsearch.info/?action=nzb&' + a[i].name + '=1' + " " +
+                           "addurl";
             safari.self.tab.dispatchMessage("addToSABnzbd", message);
 		}
 	}
@@ -33,39 +38,14 @@ function addToSABnzbdFromBinsearch() {
     
 }
 
-function handleAllDownloadLinks() {
-       $('input[name$="watchlist"]').each(function() {
-		// add button to h3 to move checked in to SABConnect
-		var img = safari.extension.baseURI + 'images/sab2_16.png';
-        $(this).attr("src", img);
-		var link = '<input class="b addSABnzbd" type="button" value="    Download selected" style="background-image: url('+img+'); background-repeat: no-repeat; background-position: 3px 3px;" />';
-		$(this).after(link);
-		$(this).parent().find('input[class="b addSABnzbd"]').first().click(addToSABnzbdFromBinsearch);
-	});
-       /* 
-         
-           var unbind = false;
-        alert("here");
-        $('img[title="Download NZB"]').each(function() {
-                // Change the title to "Send to SABnzbd"
-                $(this).attr("title", "Send to SABnzbd");
-                
-                // Change the nzb download image
-                var img = safari.extension.baseURI + 'images/sab2_16.png';
-                $(this).attr("src", img);
-
-                // Change the on click handler to send to sabnzbd
-                $(this).click(addToSABnzbdFrombinsearch);         
-                unbind = true;
-        });
-        if ( unbind )
-                $("#ctl00_ContentPlaceHolder1_ui_searchformMain_ui_updatepanelMain").unbind("DOMNodeInserted", handleAllDownloadLinks);
-        return;
-        */
-        return;
-}
-
 //Don't modify page if we aren't on binsearch.com
 if (loc_binsearch) {
-    handleAllDownloadLinks();
+    $('input[name$="watchlist"]').each(function() {
+      // add button to h3 to move checked in to SABConnect
+      var img = safari.extension.baseURI + 'images/sab2_16.png';
+      $(this).attr("src", img);
+      var link = '<input class="b addSABnzbd" type="button" value="    Download selected" style="background-image: url('+img+'); background-repeat: no-repeat; background-position: 3px 3px;" />';
+      $(this).after(link);
+      $(this).parent().find('input[class="b addSABnzbd"]').first().click(addToSABnzbdFromBinsearch);
+   });
 }
