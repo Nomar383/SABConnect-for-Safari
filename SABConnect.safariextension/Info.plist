@@ -3,19 +3,19 @@
 <plist version="1.0">
 <dict>
 	<key>Author</key>
-	<string>Kalen Hansen</string>
+	<string>Quentin Decosne</string>
 	<key>Builder Version</key>
 	<string>7534.48.3</string>
 	<key>CFBundleDisplayName</key>
 	<string>SABConnect</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.kalenhansen.sabconnect</string>
+	<string>com.quentindecosne.sabconnect</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.4</string>
+	<string>1.5</string>
 	<key>CFBundleVersion</key>
-	<string>1.4</string>
+	<string>1.5</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -33,6 +33,7 @@
 				<string>content_scripts/nzbclub.js</string>
 				<string>content_scripts/bintube.js</string>
 				<string>content_scripts/nzb.su.js</string>
+				<string>content_scripts/betanzbsorg.js</string>
 			</array>
 			<key>Start</key>
 			<array>
@@ -69,9 +70,5 @@
 			<string>Some</string>
 		</dict>
 	</dict>
-	<key>Update Manifest URL</key>
-	<string>http://sabconnect-safari-update.kalenhansen.com</string>
-	<key>Website</key>
-	<string>http://redmine.kalenhansen.com</string>
 </dict>
 </plist>
