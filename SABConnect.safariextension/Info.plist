@@ -34,7 +34,6 @@
 				<string>content_scripts/bintube.js</string>
 				<string>content_scripts/nzb.su.js</string>
 				<string>content_scripts/betanzbsorg.js</string>
-				<string>content_scripts/binsearch.js</string>
 			</array>
 			<key>Start</key>
 			<array>
@@ -64,8 +63,6 @@
 				<string>*.bintube.com</string>
 				<string>*.nzbxxx.com</string>
 				<string>*.nzb.su</string>
-				<string>*.binsearch.info</string>
-				<string>*.binsearch.net</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
