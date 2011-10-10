@@ -66,6 +66,7 @@
 				<string>*.nzb.su</string>
 				<string>*.binsearch.info</string>
 				<string>*.binsearch.net</string>
+				<string>*.mysterbin.com</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
