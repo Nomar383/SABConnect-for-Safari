@@ -42,26 +42,6 @@ function handleAllDownloadLinks() {
 		$(this).after(link);
 		$(this).parent().find('input[class="b addSABnzbd"]').first().click(addToSABnzbdFromBinsearch);
 	});
-       /* 
-         
-           var unbind = false;
-        alert("here");
-        $('img[title="Download NZB"]').each(function() {
-                // Change the title to "Send to SABnzbd"
-                $(this).attr("title", "Send to SABnzbd");
-                
-                // Change the nzb download image
-                var img = safari.extension.baseURI + 'images/sab2_16.png';
-                $(this).attr("src", img);
-
-                // Change the on click handler to send to sabnzbd
-                $(this).click(addToSABnzbdFrombinsearch);         
-                unbind = true;
-        });
-        if ( unbind )
-                $("#ctl00_ContentPlaceHolder1_ui_searchformMain_ui_updatepanelMain").unbind("DOMNodeInserted", handleAllDownloadLinks);
-        return;
-        */
         return;
 }
 
