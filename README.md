@@ -9,7 +9,7 @@ It currently supports:
 
 - [binsearch](http://www.binsearch.info) (new)
 - [bintube](http://www.bintube.com)
-- [newzbin](http://www.newzbin.com)
+- [newzbin](http://www.newzbin.com) / [newzxxx](http://www.newzxxx.com) (new)
 - [nzb.su](http://www.nzb.su)
 - [nzbclub](http://www.nzbclub.com)
 - [nzbmatrix](http://www.nzbmatrix.com)
