@@ -25,7 +25,7 @@ function addToSABnzbdFrommysterbin() {
     return false;
 }
 
-function addToSABnzbdFromCheckbox(checkbox){
+function addToSABnzbdFromCheckboxMysterbin(checkbox){
         
         var link = $(checkbox).next('a');
         var img = safari.extension.baseURI + 'images/sab2_16_fetching.png';
@@ -39,7 +39,8 @@ function addToSABnzbdFromCheckbox(checkbox){
         safari.self.tab.dispatchMessage("addToSABnzbd", message);
 }
 
-function handleAllDownloadLinks() {
+//Don't modify page if we aren't on mysterbin.com
+if (loc_mysterbin) {
         
         $('img[title="Download NZB for this collection"]').each(function() {
                 // Change the title to "Send to SABnzbd"
@@ -59,7 +60,7 @@ function handleAllDownloadLinks() {
             
             $('#sendMultiple').click(function(){
                 $('table.t input:checkbox:checked').each(function(){
-                    addToSABnzbdFromCheckbox(this);
+                    addToSABnzbdFromCheckboxMysterbin(this);
                 });
             });
            
@@ -79,9 +80,4 @@ function handleAllDownloadLinks() {
                 $(this).click(addToSABnzbdFrommysterbin);         
             }); 
         }
-}
-
-//Don't modify page if we aren't on mysterbin.com
-if (loc_mysterbin) {
-    handleAllDownloadLinks();
 }
