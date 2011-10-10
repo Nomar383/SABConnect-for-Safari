@@ -35,6 +35,7 @@
 				<string>content_scripts/nzb.su.js</string>
 				<string>content_scripts/betanzbsorg.js</string>
 				<string>content_scripts/binsearch.js</string>
+				<string>content_scripts/mysterbin.js</string>
 			</array>
 			<key>Start</key>
 			<array>
