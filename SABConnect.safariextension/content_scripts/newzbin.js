@@ -2,7 +2,7 @@
 //Check if we are on Newzbin.com
 var loc_newzbin;
 
-if (location.href.indexOf("newzbin.com") == -1) {
+if (location.href.indexOf("newzbin.com") == -1 && location.href.indexOf("newzxxx.com") == -1) {
     loc_newzbin = 0;
 }
 else {
