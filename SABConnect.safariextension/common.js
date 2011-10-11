@@ -40,31 +40,27 @@ function constructApiPost() {
 }
 
 function addToSABnzbd(addLink, nzb, mode) {
+    //On success the image doesn't get updated
 
-    // This is currently run by a content script
-    // Should change it to run in background.html
-    // The error function is always called - even on success, probably due to this
     var sabApiUrl = constructApiUrl();
     var data = constructApiPost();
     data.mode = mode;
     data.name = nzb;
 
-    dojo.xhrGet({
-        url:sabApiUrl,
-        handleAs:"json",
-        content:data,
-        load: function(response, ioArgs){
-            alert(response);
-            alert(ioArgs);
-        },
-        error: function(response, ioArgs){
-            //alert(response);
-            //alert(ioArgs);
+    $.ajax({
+        type: "GET",
+        url: sabApiUrl,
+        dataType: "JSON",
+        data: data,
+        success: function(data){
+            // alert("success");
             var img = safari.extension.baseURI + 'images/sab2_16_green.png';
             $(addLink).find('img').attr("src", img);
+        },
+        error:function(){
+            alert("error while adding to SABnzbd");
         }
     });
-    
 }
 
 //Function to respond and pass message from injected javascript
