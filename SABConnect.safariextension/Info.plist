@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Kalen Hansen</string>
 	<key>Builder Version</key>
-	<string>7534.48.3</string>
+	<string>7534.51.22</string>
 	<key>CFBundleDisplayName</key>
 	<string>SABConnect</string>
 	<key>CFBundleIdentifier</key>
@@ -36,6 +36,7 @@
 				<string>content_scripts/binsearch.js</string>
 				<string>content_scripts/betanzbsorg.js</string>
 				<string>content_scripts/mysterbin.js</string>
+				<string>common_injected.js</string>
 			</array>
 			<key>Start</key>
 			<array>

@@ -53,12 +53,10 @@ function addToSABnzbd(addLink, nzb, mode) {
         dataType: "JSON",
         data: data,
         success: function(data){
-            // alert("success");
-            var img = safari.extension.baseURI + 'images/sab2_16_green.png';
-            $(addLink).find('img').attr("src", img);
+           safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("success", addLink);
         },
         error:function(){
-            alert("error while adding to SABnzbd");
+           safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("error", addLink);
         }
     });
 }
