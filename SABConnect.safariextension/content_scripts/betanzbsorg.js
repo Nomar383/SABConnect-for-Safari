@@ -14,7 +14,7 @@ var nzburl;
 var addLink;
 var category = null;
 
-function findNZBId(elem) {
+function findNZBIdBetaNZBsDOTorg(elem) {
 	var url = $(elem).attr('href');
 
 	var nzbid = url.substr(url.indexOf('/getnzb/')+8);
@@ -39,7 +39,7 @@ function addToSABnzbdFromBetaNZBsDOTorg() {
 			var a = tr.find('a[title="Send to SABnzbd"]');
 
 			// Find the newzbin id from the href
-			nzburl = findNZBId(a);
+			nzburl = findNZBIdBetaNZBsDOTorg(a);
 			if (nzburl) {
 				category = tr.find('a[href*="/browse?"]')[1].innerText.replace(' > ', '.');
 
@@ -62,7 +62,7 @@ function addToSABnzbdFromBetaNZBsDOTorg() {
 		return false;
 	} else {
 		// Find the newzbin id from the href
-		nzburl = findNZBId(this);
+		nzburl = findNZBIdBetaNZBsDOTorg(this);
 		if (nzburl) {
 			// Set the image to an in-progress image
 			var img = safari.extension.baseURI + 'images/sab2_16_fetching.png';
