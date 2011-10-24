@@ -27,7 +27,7 @@ function addToSABnzbdFromNZBCLUB() {
 
 function handleAllDownloadLinks() {
         var unbind = false;
-        $('img[title="Download NZB"]').each(function() {
+        $('img[alt="Get NZB"]').each(function() {
                 // Change the title to "Send to SABnzbd"
                 $(this).attr("title", "Send to SABnzbd");
                 
@@ -46,5 +46,5 @@ function handleAllDownloadLinks() {
 
 //Don't modify page if we aren't on nzbclub.com
 if (loc_nzbclub) {
-    $("#ctl00_ContentPlaceHolder1_ui_searchformMain_ui_updatepanelMain").bind("DOMNodeInserted", handleAllDownloadLinks);
+    handleAllDownloadLinks();
 }
