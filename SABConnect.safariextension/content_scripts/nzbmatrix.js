@@ -13,54 +13,70 @@ else {
 }
 /**********************************************************/
 
-function findNZBIdMatrix(elem) {
-    var url = $(elem).attr('href');
+var nzbxxx_username;
+var nzbxxx_apikey;
 
-    // 0.5a6 needs nzb-details not nzb-download in url
-    url = url.replace('nzb-download', 'nzb-details');
-    
-    return url;
+function findNZBIdMatrix(elem) {
+   var url = $(elem).attr('href');
+   
+   var hostname = window.location.href.substr(0, window.location.href.indexOf('/', 8));
+   if (hostname.indexOf('nzbxxx') != -1) {
+      url = url.replace('nzb-download', 'api-nzb-download') + '&apikey=' + nzbxxx_apikey + '&username=' + nzbxxx_username;
+   } else {
+      // 0.5+ needs nzb-details not nzb-download in url
+      url = url.replace('nzb-download', 'nzb-details');
+   }
+   
+   if (url.indexOf(hostname) == -1) {
+      url = hostname + url
+   }
+   return url;
 }
 
 function addToSABnzbdFromNZBMatrix() {
-
-    //if(!gConfig.enable_nzbmatrix) {
-    //   // If disabled, skip the dl
-    //    return true;
-    //}
-
-    // Find the newzbin id from the href
-    var nzbid = findNZBIdMatrix(this);
-    if(nzbid) {
-        // Set the image to an in-progress image
-        var img = safari.extension.baseURI +'images/sab2_16_fetching.png';
-        $(this).find('img').attr("src", img);
-        var addLink = this;
-        
-        //Construct message to send to background page
-        var message = addLink + " " + nzbid + " " + "addurl";
-        safari.self.tab.dispatchMessage("addToSABnzbd", message);
-    }
-
-    
-    return false;
-
+   var nzbid = findNZBIdMatrix(this);
+   if (nzbid) {
+      // Set the image to an in-progress image
+      var img = safari.extension.baseURI + 'images/sab2_16_fetching.png';
+      $(this).find('img').attr("src", img);
+      var addLink = this;
+      
+      //Construct message to send to background page
+      var message = addLink + " " + nzbid + " " + "addurl";
+      safari.self.tab.dispatchMessage("addToSABnzbd", message);
+   }
+   
+   return false;
 }
 
 //Don't modify page if we aren't on nzbmatrix.com
 if (loc_nzbmatrix) {
+   // On search results (tabulated) pages:
+   $('img[title="Download NZB"]').each(function() {
+       // Change the title to "Send to SABnzbd"
+       $(this).attr("title", "Send to SABnzbd");
+       
+       // Change the nzb download image
+       var img = safari.extension.baseURI + 'images/sab2_16.png';
+       $(this).attr("src", img);
+      
+       // Change the on click handler to send to sabnzbd
+       // this is the <img>, parent is the <a>
+       $(this).parent().click(addToSABnzbdFromNZBMatrix);
+   });
+}
 
-    $('img[title="Download NZB"]').each(function() {
-        // Change the title to "Send to SABnzbd"
-        $(this).attr("title", "Send to SABnzbd");
-        
-        // Change the nzb download image
-        var img = safari.extension.baseURI + 'images/sab2_16.png';
-        $(this).attr("src", img);
+//Get the NZBXXX data from common.js
+safari.self.addEventListener("message", handleMessage, false);
 
-        // Change the on click handler to send to sabnzbd
-        // this is the <img>, parent is the <a>
-        $(this).parent().click(addToSABnzbdFromNZBMatrix);
-        
-    });
+function handleMessage(msgEvent) {
+   var messageName = msgEvent.name;
+   var messageData = msgEvent.message;
+      
+   if (messageName === "nzbxxx_username") {
+      nzbxxx_username = messageData;
+   }
+   else if (messageName === "nzbxxx_apikey") {
+      nzbxxx_apikey = messageData;
+   }   
 }

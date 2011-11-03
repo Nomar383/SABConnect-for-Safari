@@ -75,3 +75,7 @@ function respondToMessage(theMessageEvent) {
 
 //Add Listener to respond to injected javascript
 safari.application.addEventListener("message",respondToMessage,false);
+
+//Send NZBXXX Info
+safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("nzbxxx_username", safari.extension.settings.getItem("nzbxxx_username"));
+safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("nzbxxx_apikey", safari.extension.settings.getItem("nzbxxx_apikey"));

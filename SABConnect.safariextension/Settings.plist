@@ -62,5 +62,25 @@
 		<key>Type</key>
 		<string>TextField</string>
 	</dict>
+	<dict>
+		<key>Type</key>
+		<string>Separator</string>
+	</dict>
+	<dict>
+		<key>Key</key>
+		<string>nzbxxx_username</string>
+		<key>Title</key>
+		<string>NZBXXX Username</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
+	<dict>
+		<key>Key</key>
+		<string>nzbxxx_apikey</string>
+		<key>Title</key>
+		<string>NZBXXX API Key</string>
+		<key>Type</key>
+		<string>TextField</string>
+	</dict>
 </array>
 </plist>
