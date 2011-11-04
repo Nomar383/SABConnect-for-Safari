@@ -66,8 +66,11 @@ if (loc_nzbmatrix) {
    });
 }
 
+
+
 //Get the NZBXXX data from common.js
 safari.self.addEventListener("message", handleMessage, false);
+safari.self.tab.dispatchMessage("get_nzbxxx_data", null);
 
 function handleMessage(msgEvent) {
    var messageName = msgEvent.name;
