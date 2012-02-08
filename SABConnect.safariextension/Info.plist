@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Kalen Hansen</string>
 	<key>Builder Version</key>
-	<string>7534.51.22</string>
+	<string>7534.53.10</string>
 	<key>CFBundleDisplayName</key>
 	<string>SABConnect</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.7</string>
+	<string>1.8</string>
 	<key>CFBundleVersion</key>
-	<string>1.7</string>
+	<string>1.8</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -37,6 +37,7 @@
 				<string>content_scripts/betanzbsorg.js</string>
 				<string>content_scripts/mysterbin.js</string>
 				<string>common_injected.js</string>
+				<string>content_scripts/fanzub.js</string>
 			</array>
 			<key>Start</key>
 			<array>
@@ -69,6 +70,7 @@
 				<string>*.binsearch.net</string>
 				<string>*.mysterbin.com</string>
 				<string>*.newzxxx.com</string>
+				<string>*.fanzub.com</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
