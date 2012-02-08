@@ -16,3 +16,4 @@ It currently supports:
 - [nzbs.org](http://www.nzbs.org)
 - [beta.nzbs.org](http://beta.nzbs.org) (new)
 - [mysterbin](http://mysterbin.com) (new)
+- [fanzub](http://fanzub.com) (new)
