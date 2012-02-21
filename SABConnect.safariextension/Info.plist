@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.8</string>
+	<string>1.9</string>
 	<key>CFBundleVersion</key>
-	<string>1.8</string>
+	<string>1.9</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -61,7 +61,7 @@
 			<array>
 				<string>*.nzbmatrix.com</string>
 				<string>*.nzbs.org</string>
-				<string>*.newzbin.com</string>
+				<string>*.newzbin2.es</string>
 				<string>*.nzbclub.com</string>
 				<string>*.bintube.com</string>
 				<string>*.nzbxxx.com</string>
