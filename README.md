@@ -7,13 +7,15 @@ it replaces the "Download NZB" with a "Send to SABnzbd" button which will obviou
 
 It currently supports:
 
-- [binsearch](http://www.binsearch.info) (new)
+- [binsearch](http://www.binsearch.info)
 - [bintube](http://www.bintube.com)
-- [newzbin](http://www.newzbin.com) / [newzxxx](http://www.newzxxx.com) (new)
+- [newzbin](http://www.newzbin.com) / [newzxxx](http://www.newzxxx.com)
 - [nzb.su](http://www.nzb.su)
 - [nzbclub](http://www.nzbclub.com)
 - [nzbmatrix](http://www.nzbmatrix.com)
 - [nzbs.org](http://www.nzbs.org)
-- [beta.nzbs.org](http://beta.nzbs.org) (new)
-- [mysterbin](http://mysterbin.com) (new)
-- [fanzub](http://fanzub.com) (new)
+- [beta.nzbs.org](http://beta.nzbs.org)
+- [mysterbin](http://mysterbin.com)
+- [fanzub](http://fanzub.com)
+- [nzbindex.com](http://nzbindex.com) (new)
+- [nzbindex.nl](nzbindex.nl) (new)

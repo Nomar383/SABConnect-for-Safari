@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.9</string>
+	<string>2.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.9</string>
+	<string>2.0</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -38,6 +38,7 @@
 				<string>content_scripts/mysterbin.js</string>
 				<string>common_injected.js</string>
 				<string>content_scripts/fanzub.js</string>
+				<string>content_scripts/nzbindex.js</string>
 			</array>
 			<key>Start</key>
 			<array>
@@ -71,6 +72,8 @@
 				<string>*.mysterbin.com</string>
 				<string>*.newzxxx.com</string>
 				<string>*.fanzub.com</string>
+				<string>*.nzbindex.com</string>
+				<string>*.nzbindex.nl</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
