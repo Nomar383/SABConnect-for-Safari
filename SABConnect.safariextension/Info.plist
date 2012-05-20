@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Kalen Hansen</string>
 	<key>Builder Version</key>
-	<string>7534.53.10</string>
+	<string>7534.56.5</string>
 	<key>CFBundleDisplayName</key>
 	<string>SABConnect</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.0</string>
+	<string>2.1</string>
 	<key>CFBundleVersion</key>
-	<string>2.0</string>
+	<string>2.1</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -34,7 +34,6 @@
 				<string>content_scripts/bintube.js</string>
 				<string>content_scripts/nzb.su.js</string>
 				<string>content_scripts/binsearch.js</string>
-				<string>content_scripts/betanzbsorg.js</string>
 				<string>content_scripts/mysterbin.js</string>
 				<string>common_injected.js</string>
 				<string>content_scripts/fanzub.js</string>

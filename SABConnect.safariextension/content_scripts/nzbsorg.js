@@ -1,70 +1,117 @@
 /**********************************************************/
-//Check if we are on nzbs.org
-var loc_nzbsorg;
+//Check if we are on beta.nzbs.org
+var loc_betanzbsorg;
 
 if (location.href.indexOf("nzbs.org") == -1) {
-    loc_nzbsorg = 0;
+    loc_betanzbsorg = 0;
 }
 else {
-    loc_nzbsorg = 1;
+    loc_betanzbsorg = 1;
 }
 /**********************************************************/
 
-//Variable declarations
-var rssURL;
-var match;
-var user;
-var hash;
-var lastLink;
+var nzburl;
+var addLink;
+var category = null;
 
-//Don't check page if we aren't on nzbs.org
-if (loc_nzbsorg) {
+function findNZBIdBetaNZBsDOTorg(elem) {
+	var url = $(elem).attr('href');
 
-    // Scrape the users userid and hash to add to download links
-    rssURL = $('link[title="RSS 1.0"]').attr('href');
-    // These will fail if nzbs.org changes the RSS feed at all
-    match = /i=([^&]*)/i.exec(rssURL);
-    user = match[1];
-    match = /h=([^&]*)/i.exec(rssURL);
-    hash = match[1];
+	var nzbid = url.substr(url.indexOf('/getnzb/')+8);
+    if (nzbid.indexOf('/') > 0) {
+        nzbid = nzbid.substr(0, nzbid.indexOf('/'));
+	}
+    url = 'http://beta.nzbs.org/getnzb/' + nzbid + '.nzb';
+
+	return url;
 }
 
-//http://nzbs.org/index.php?action=getnzb&nzbid=307942
-function addToSABnzbdFromNZBORG() {
-    var img = safari.extension.baseURI + 'images/sab2_16_fetching.png';
-    $(this).find('img').attr("src", img);
-    
-    // Find the newzbin id from the href
-    var url = 'http://nzbs.org/'
-    var nzburl = url.concat($(this).attr('href'));
-    // Add the authentication to the link about to be fetched
-    nzburl += '&i=' + user;
-    nzburl += '&h=' + hash;
-    var addLink = this;
-    
-    //handle the repeat link sending issue
-    if (!(lastLink == nzburl)) {
-        lastLink = nzburl;
-        
-        //Construct message to send to background page
-        var message = addLink + " " + nzburl + " " + "addurl";
-        safari.self.tab.dispatchMessage("addToSABnzbd", message);
-    }
-    
-    return false;
+function addToSABnzbdFromBetaNZBsDOTorg() {
+	if (this.nodeName.toUpperCase() == 'INPUT') {
+		this.value = "Sending...";
+		$(this).css('color', 'green');
 
+		var user = $('input[name="UID"]').val();
+		var rss_hash = $('input[name="RSSTOKEN"]').val();
+
+	    $('table.data input:checked').each(function() {
+			var tr = $(this).parent().parent();
+			var a = tr.find('a[title="Send to SABnzbd"]');
+
+			// Find the newzbin id from the href
+			nzburl = findNZBIdBetaNZBsDOTorg(a);
+			if (nzburl) {
+				category = tr.find('a[href*="/browse?"]')[1].innerText.replace(' > ', '.');
+
+				addLink = a;
+
+				// Add the authentication to the link about to be fetched
+				nzburl += '?i=' + user + '&r=' + rss_hash;
+
+            //Construct message to send to background page
+            var message = addLink + " " + nzburl + " " + "addurl";
+            safari.self.tab.dispatchMessage("addToSABnzbd", message);
+			}
+		});
+		this.value = 'Sent to SAB!';
+		$(this).css('color', 'red');
+		sendToSabButton = this;
+		
+		setTimeout(function(){ sendToSabButton.value = 'Send to SAB'; $(sendToSabButton).css('color', '#888'); }, 4000);
+
+		return false;
+	} else {
+		// Find the newzbin id from the href
+		nzburl = findNZBIdBetaNZBsDOTorg(this);
+		if (nzburl) {
+			// Set the image to an in-progress image
+			var img = safari.extension.baseURI + 'images/sab2_16_fetching.png';
+			$(this).css('background-image', 'url('+img+')');
+
+			category = null;
+			if ($('#nzb_multi_operations_form').length == 0) {
+				category = $(this).parent().parent().parent().parent().find('a[href*="/browse?"]')[1].innerText.replace(' > ', '.');
+			} else {
+				try {
+					category = $(this).parent().parent().parent().find('a[href*="/browse?"]')[1].innerText.replace(' > ', '.');
+				} catch (ex) { }
+			}
+
+			addLink = this;
+
+			var user = $('input[name="UID"]').val();
+			var rss_hash = $('input[name="RSSTOKEN"]').val();
+
+			// Add the authentication to the link about to be fetched
+			nzburl += '?i=' + user + '&r=' + rss_hash;
+
+         //Construct message to send to background page
+         var message = addLink + " " + nzburl + " " + "addurl";
+         safari.self.tab.dispatchMessage("addToSABnzbd", message);
+
+			return false;
+		}
+	}
 }
 
-//Don't modify page if we aren't on nzbs.org
-if (loc_nzbsorg) {
-
-    // Loop through each download link and prepend a link+img to add to sabnzbd
-    $('.dlnzb').each(function() {
-        var img = safari.extension.baseURI + 'images/sab2_16.png';
-        var href = $(this).attr('href');
-        var link = '<a class="addSABnzbd" href="' + href + '"><img src="' + img + '" /></a> ';
-        $(this).before(link);
-        $('.addSABnzbd').click(addToSABnzbdFromNZBORG);
-        
+//Don't check page if we aren't on nzb.su
+if (loc_betanzbsorg) {
+	// List view: add a button above the list to send selected NZBs to SAB
+	$('input[class="nzb_multi_operations_sab"]').each(function() {
+		$(this).css('display', 'inline-block');
+		$(this).click(addToSABnzbdFromBetaNZBsDOTorg);
     });
+
+	$.merge($('a[title="Download Nzb"]'), $('a[title="Download NZB"]')).each(function() {
+		// Change the title to "Send to SABnzbd"
+		$(this).attr("title", "Send to SABnzbd");
+
+		// Change the nzb download image
+		var img = safari.extension.baseURI + 'images/sab2_16.png';
+		$(this).parent().css('background-image', 'url('+img+')');
+
+		// Change the on click handler to send to sabnzbd
+		// this is the <a>
+		$(this).click(addToSABnzbdFromBetaNZBsDOTorg);
+	});
 }

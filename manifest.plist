@@ -1,41 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-
 <plist version="1.0">
-
 <dict>
-
-   <key>Extension Updates</key>
-
-   <array>
-
-     <dict>
-
-       <key>CFBundleIdentifier</key>
-
-       <string>com.kalenhansen.sabconnect</string>
-
-       <key>Developer Identifier</key>
-
-       <string>JXH3CHHWTG</string>
-
-       <key>CFBundleVersion</key>
-
-       <string>2.0</string>
-
-       <key>CFBundleShortVersionString</key>
-
-       <string>2.0</string>
-
-       <key>URL</key>
-
-       <string>http://sabconnect-safari.kalenhansen.com</string>
-
-     </dict>
-
-   </array>
-
+	<key>Extension Updates</key>
+	<array>
+		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>com.kalenhansen.sabconnect</string>
+			<key>Developer Identifier</key>
+			<string>JXH3CHHWTG</string>
+			<key>CFBundleVersion</key>
+			<string>2.1</string>
+			<key>CFBundleShortVersionString</key>
+			<string>2.1</string>
+			<key>URL</key>
+			<string>http://sabconnect-safari.kalenhansen.com</string>
+		</dict>
+	</array>
 </dict>
-
 </plist>
