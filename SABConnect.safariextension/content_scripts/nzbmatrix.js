@@ -21,7 +21,11 @@ function findNZBIdMatrix(elem) {
    
    var hostname = window.location.href.substr(0, window.location.href.indexOf('/', 8));
    if (hostname.indexOf('nzbxxx') != -1) {
-      url = url.replace('nzb-download', 'api-nzb-download') + '&apikey=' + nzbxxx_apikey + '&username=' + nzbxxx_username;
+      url = url.replace('nzb-download.php', 'v1.1/download.php') + '&apikey=' + nzbxxx_apikey + '&username=' + nzbxxx_username;
+
+      if (hostname == "http://nzbxxx.com") {
+        hostname = "http://api.nzbxxx.com";
+      }
    } else {
       // 0.5+ needs nzb-details not nzb-download in url
       url = url.replace('nzb-download', 'nzb-details');
