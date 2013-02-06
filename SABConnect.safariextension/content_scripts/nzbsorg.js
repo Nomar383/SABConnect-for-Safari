@@ -94,7 +94,7 @@ function addToSABnzbdFromBetaNZBsDOTorg() {
 	}
 }
 
-//Don't check page if we aren't on nzb.su
+//Don't check page if we aren't on nzbs.org
 if (loc_betanzbsorg) {
 	// List view: add a button above the list to send selected NZBs to SAB
 	$('input[class="nzb_multi_operations_sab"]').each(function() {

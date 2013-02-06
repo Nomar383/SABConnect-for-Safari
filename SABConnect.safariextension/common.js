@@ -71,12 +71,6 @@ function respondToMessage(theMessageEvent) {
        var mode = message_array[2];
        addToSABnzbd(addLink,nzbid,mode);
     }
-    else if(theMessageEvent.name === "get_nzbxxx_data")
-    {
-       //Send NZBXXX Info
-       safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("nzbxxx_username", safari.extension.settings.getItem("nzbxxx_username"));
-       safari.application.activeBrowserWindow.activeTab.page.dispatchMessage("nzbxxx_apikey", safari.extension.settings.getItem("nzbxxx_apikey"));
-    }
 }
 
 //Add Listener to respond to injected javascript

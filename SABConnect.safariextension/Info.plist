@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Kalen Hansen</string>
 	<key>Builder Version</key>
-	<string>7534.57.2</string>
+	<string>8536.26.17</string>
 	<key>CFBundleDisplayName</key>
 	<string>SABConnect</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2</string>
+	<string>2.3</string>
 	<key>CFBundleVersion</key>
-	<string>2.2</string>
+	<string>2.3</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -27,17 +27,16 @@
 		<dict>
 			<key>End</key>
 			<array>
-				<string>content_scripts/newzbin.js</string>
-				<string>content_scripts/nzbmatrix.js</string>
 				<string>content_scripts/nzbsorg.js</string>
 				<string>content_scripts/nzbclub.js</string>
 				<string>content_scripts/bintube.js</string>
 				<string>content_scripts/nzb.su.js</string>
 				<string>content_scripts/binsearch.js</string>
-				<string>content_scripts/mysterbin.js</string>
 				<string>common_injected.js</string>
 				<string>content_scripts/fanzub.js</string>
 				<string>content_scripts/nzbindex.js</string>
+				<string>content_scripts/dognzb.js</string>
+				<string>content_scripts/nzbx.js</string>
 			</array>
 			<key>Start</key>
 			<array>
@@ -59,20 +58,17 @@
 		<dict>
 			<key>Allowed Domains</key>
 			<array>
-				<string>*.nzbmatrix.com</string>
 				<string>*.nzbs.org</string>
-				<string>*.newzbin2.es</string>
 				<string>*.nzbclub.com</string>
 				<string>*.bintube.com</string>
-				<string>*.nzbxxx.com</string>
 				<string>*.nzb.su</string>
 				<string>*.binsearch.info</string>
 				<string>*.binsearch.net</string>
-				<string>*.mysterbin.com</string>
-				<string>*.newzxxx.com</string>
 				<string>*.fanzub.com</string>
 				<string>*.nzbindex.com</string>
 				<string>*.nzbindex.nl</string>
+				<string>*.dognzb.cr</string>
+				<string>*.nzbx.co</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
