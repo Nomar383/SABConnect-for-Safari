@@ -1,7 +1,7 @@
-SABConnect for Safari 5
+SABConnect for Safari
 =====================
 
-SABConnect for Safari 5 is a port of the popular SABConnect extension from Google Chrome.
+SABConnect for Safari is a port of the popular SABConnect extension from Google Chrome.
 
 It replaces the "Download NZB" with a "Send to SABnzbd" button which will automatically add the nzb to your download queue.
 

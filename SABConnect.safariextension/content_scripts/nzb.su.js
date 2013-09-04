@@ -44,10 +44,10 @@ function addToSABnzbdFromNZBdotsu() {
 				addLink = a;
 
 				// Add the authentication to the link about to be fetched
-				nzburl += '?i=' + user + '&r=' + rss_hash;
+				addLink += '?i=' + user + '&r=' + rss_hash;
 
             //Construct message to send to background page
-            var message = addLink + " " + nzburl + " " + "addurl";
+            var message = addLink + " " + addLink + " " + "addurl";
             safari.self.tab.dispatchMessage("addToSABnzbd", message);
 			}
 		});
@@ -81,10 +81,10 @@ function addToSABnzbdFromNZBdotsu() {
 			var rss_hash = $('input[name="RSSTOKEN"]').val();
 
 			// Add the authentication to the link about to be fetched
-			nzburl += '?i=' + user + '&r=' + rss_hash;
+			addLink += '?i=' + user + '&r=' + rss_hash;
 
          //Construct message to send to background page
-         var message = addLink + " " + nzburl + " " + "addurl";
+         var message = addLink + " " + addLink + " " + "addurl";
          safari.self.tab.dispatchMessage("addToSABnzbd", message);
 
 			return false;
@@ -94,7 +94,8 @@ function addToSABnzbdFromNZBdotsu() {
 
 //Don't check page if we aren't on nzb.su
 if (loc_nzbsu) {
-	// List view: add a button above the list to send selected NZBs to SAB
+    
+    // List view: add a button above the list to send selected NZBs to SAB
 	$('input[class="nzb_multi_operations_sab"]').each(function() {
 		$(this).css('display', 'inline-block');
 		$(this).click(addToSABnzbdFromNZBdotsu);
@@ -111,5 +112,8 @@ if (loc_nzbsu) {
 		// Change the on click handler to send to sabnzbd
 		// this is the <a>
 		$(this).click(addToSABnzbdFromNZBdotsu);
+                                                                             
 	});
+
+
 }
