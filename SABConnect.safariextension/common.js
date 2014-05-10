@@ -46,7 +46,7 @@ function addToSABnzbd(addLink, nzb, mode) {
     var data = constructApiPost();
     data.mode = mode;
     data.name = nzb;
-
+    
     $.ajax({
         type: "GET",
         url: sabApiUrl,

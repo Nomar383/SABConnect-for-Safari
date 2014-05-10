@@ -14,53 +14,94 @@ var nzburl;
 
 function findNZBId(elem) {
 	nzbid = $(elem).attr('id');
-	url = '/fetch/' + nzbid;
+	url = 'https://www.dognzb.cr' + '/fetch/' + nzbid;
 	return url;
 }
 
 function addToSABnzbdFromDognzb() {
 	var rss_hash = $('input[name="rsstoken"]').val();
     
-    nzburl = findNZBId(this);
-    if (nzburl) {
-        // Set the image to an in-progress image
-        var img = safari.extension.baseURI + 'images/sab2_16_fetching.png';
-        $(this).css('background-image', 'url('+img+')');
+    if (this.nodeName.toUpperCase() == 'INPUT') {
+		this.value = "Sending...";
+		$(this).css('color', 'green');
         
-        // Add the authentication to the link about to be fetched
-        nzburl += '/' + rss_hash;
+	    $('table.data input:checked').each(function() {
+           var tr = $(this).parent().parent();
+           var a = tr.find('a[title="Send to SABnzbd"]');
+           
+           // Find the nzb id from the href
+           nzburl = findNZBId(a);
+           if (nzburl) {
+               category = tr.find('span[class~="labelstyle-444444"]').text();
+               
+               //addLink = a;
+               
+               // Add the authentication to the link about to be fetched
+               nzburl += '/' + rss_hash;
+                                           
+               //Construct message to send to background page
+               var message = nzburl + " " + nzburl + " " + "addurl";
+               safari.self.tab.dispatchMessage("addToSABnzbd", message);
+           }
+        });
         
-        //Add domain info to nzburl
-        nzburl = "https://dognzb.cr" + nzburl;
+		this.value = 'Sent to SAB!';
+		$(this).css('color', 'red');
+		sendToSabButton = this;
+		
+		setTimeout(function(){ sendToSabButton.value = 'Send to SAB'; $(sendToSabButton).css('color', '#888'); }, 4000);
         
-        //Construct message to send to background page
-        var message = nzburl + " " + nzburl + " " + "addurl";
-        safari.self.tab.dispatchMessage("addToSABnzbd", message);
+		return false;
+	} else {
+		// Find the newzbin id from the href
+		nzburl = findNZBId(this);
+		if (nzburl) {
+			// Set the image to an in-progress image
+            var img = safari.extension.baseURI + 'images/sab2_16_fetching.png';
+            $(this).css('background-image', 'url('+img+')');
+            
+			var tr = $(this).parent().parent();
+			category = tr.find('span[class~="labelstyle-444444"]').text();
+            
+			//addLink = this;
+			
+            
+			// Add the authentication to the link about to be fetched
+			nzburl += '/' + rss_hash;
+                        
+			//Construct message to send to background page
+            var message = nzburl + " " + nzburl + " " + "addurl";
+            safari.self.tab.dispatchMessage("addToSABnzbd", message);
+            
+			return false;
+		}
+	}
 
-        return false;
-    }
 }
 
 //Don't check page if we aren't on dognzb
 if (loc_dognzb) {
-	$('div[class="dog-icon-download "]').each(function() {
-		// Change the title to "Send to SABnzbd"
-		$(this).attr("title", "Send to SABnzbd");
+    $('div[class="dog-icon-download"]').each(function() {
+        // Change the title to "Send to SABnzbd"
+        newlink = $('<div></div>').attr("title", "Send to SABnzbd");
+        newlink.addClass('dog-icon-download');
 
-		// Change the nzb download image
-		var img = safari.extension.baseURI + 'images/sab2_16.png';
-		$(this).css('background-image', 'url('+img+')');
-		$(this).css('background-position', '0 0');
-		
-		// Extract NZB id from onClick and set to ID attribute
-		
-		var nzbid = $(this).attr('onClick');
-		var nzbid = nzbid.split('\'')[1];
-		$(this).attr("id", nzbid);
+        // Change the nzb download image
+        var img = safari.extension.baseURI + 'images/sab2_16.png';
+        newlink.css('background', 'url('+img+')');
 
-		// Change the on click handler to send to sabnzbd
-		// this is the <a>
-		$(this).removeAttr("onClick");
-		$(this).click(addToSABnzbdFromDognzb);
-	});
+        // Extract NZB id from onClick and set to ID attribute
+        var nzbid = $(this).attr('onClick');
+        var nzbid = nzbid.split('\'')[1];
+        newlink.attr("id", nzbid);
+
+        // Change the on click handler to send to sabnzbd
+        // this is the <a>
+        //$(this).removeAttr("onClick");
+        newlink.click(addToSABnzbdFromDognzb);
+        $(this).replaceWith(newlink);
+    });
+
 }
+
+
