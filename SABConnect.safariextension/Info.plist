@@ -37,6 +37,7 @@
 				<string>content_scripts/nzbindex.js</string>
 				<string>content_scripts/dognzb.js</string>
 				<string>content_scripts/nzbx.js</string>
+				<string>content_scripts/nzbs.in.js</string>
 			</array>
 			<key>Start</key>
 			<array>
@@ -69,6 +70,7 @@
 				<string>*.nzbindex.nl</string>
 				<string>*.dognzb.cr</string>
 				<string>*.nzbx.co</string>
+				<string>*.nzbs.in</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
