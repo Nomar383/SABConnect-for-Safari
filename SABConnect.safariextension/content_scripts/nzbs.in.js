@@ -1,4 +1,4 @@
-// Generic Newznab template adapter from nzb.su.js
+// Generic Newznab template adapted from nzb.su.js
 
 var nzburl;
 var addLink;
