@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Kalen Hansen</string>
 	<key>Builder Version</key>
-	<string>9537.74.9</string>
+	<string>9537.78.2</string>
 	<key>CFBundleDisplayName</key>
 	<string>SABConnect</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.5</string>
+	<string>2.5.1</string>
 	<key>CFBundleVersion</key>
-	<string>2.5</string>
+	<string>2.5.1</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -37,6 +37,7 @@
 				<string>content_scripts/nzbindex.js</string>
 				<string>content_scripts/dognzb.js</string>
 				<string>content_scripts/nzbx.js</string>
+				<string>content_scripts/nzbs.in.js</string>
 			</array>
 			<key>Start</key>
 			<array>
@@ -69,6 +70,7 @@
 				<string>*.nzbindex.nl</string>
 				<string>*.dognzb.cr</string>
 				<string>*.nzbx.co</string>
+				<string>*.nzbs.in</string>
 			</array>
 			<key>Include Secure Pages</key>
 			<true/>
