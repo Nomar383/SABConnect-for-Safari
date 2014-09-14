@@ -10,7 +10,7 @@ function getNzbdId(elem) {
 
     var nzbid = url.substr(url.indexOf('/getnzb/') + 8);
     nzbid = nzbid.substr(0, nzbid.indexOf('/'));
-    url = origin + '/getnzb/' + nzbid + '.nzb';
+    url = nzbSite + '/getnzb/' + nzbid + '.nzb';
 
     return url;
 }
