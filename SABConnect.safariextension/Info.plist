@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>Kalen Hansen</string>
 	<key>Builder Version</key>
-	<string>9537.78.2</string>
+	<string>9537.85.10.17.1</string>
 	<key>CFBundleDisplayName</key>
 	<string>SABConnect</string>
 	<key>CFBundleIdentifier</key>
@@ -13,9 +13,9 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.5</string>
+	<string>2.6</string>
 	<key>CFBundleVersion</key>
-	<string>2.5</string>
+	<string>2.6</string>
 	<key>Chrome</key>
 	<dict>
 		<key>Global Page</key>
@@ -51,6 +51,8 @@
 	</dict>
 	<key>Description</key>
 	<string>Unofficial port of SABConnect for Safari</string>
+	<key>DeveloperIdentifier</key>
+	<string>JXH3CHHWTG</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
