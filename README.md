@@ -17,4 +17,3 @@ It currently supports:
 - [nzbindex.nl](http://nzbindex.nl)
 - [nzbs.in](https://nzbs.in)
 - [nzbs.org](https://www.nzbs.org)
-- [nzbx.co](https://nzbx.co)

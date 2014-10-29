@@ -12,7 +12,7 @@ else {
 
 var nzburl;
 
-function findNZBId(elem) {
+function findNZBIdDog(elem) {
 	nzbid = $(elem).attr('id');
 	url = 'https://www.dognzb.cr' + '/fetch/' + nzbid;
 	return url;
@@ -30,7 +30,7 @@ function addToSABnzbdFromDognzb() {
            var a = tr.find('a[title="Send to SABnzbd"]');
            
            // Find the nzb id from the href
-           nzburl = findNZBId(a);
+           nzburl = findNZBIdDog(a);
            if (nzburl) {
                category = tr.find('span[class~="labelstyle-444444"]').text();
                
@@ -54,7 +54,7 @@ function addToSABnzbdFromDognzb() {
 		return false;
 	} else {
 		// Find the newzbin id from the href
-		nzburl = findNZBId(this);
+		nzburl = findNZBIdDog(this);
 		if (nzburl) {
 			// Set the image to an in-progress image
             var img = safari.extension.baseURI + 'images/sab2_16_fetching.png';
